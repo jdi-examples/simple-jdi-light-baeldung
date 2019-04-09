@@ -187,19 +187,21 @@ In addition, you don’t need to think about Thread sleeps, Explicit waits, stal
 ## Failed exceptions and Allure reports
 You can stop before method check execution, change some filled (e.g. firstName to “Roman (changed)”) and continue test to see that check will throw exception in case of some mismatch. And this assertion will be pretty much readable also:
 
-```Failed to execute 'check' for element 'Contact Page Form' action during '10' seconds. Exception: Check form failed:
+```
+Failed to execute 'check' for element 'Contact Page Form' action during '10' seconds. 
+Exception: Check form failed:
 Field 'firstName' (Actual: 'Roman (changed)' <> Expected: 'Roman')
 ```
 JDI has good integration with Allure so as result of this test (if Allure are in place) you can see colorful and readable report with all tests execution results:
 
 ![Allure test fail](images/allure-test-fail.png)
-- Test execution log
+- **Test execution log**
 
 ![Allure results](images/allure-results.png)
-- Detailed test’s fail reasons information (you can click on … under error text and observe full exception stack trace)
+- **Detailed test’s fail reasons information (you can click on … under error text and observe full exception stack trace)**
 
 ![Allure test run](images/allure-test-run.png)
-- And history of all previous tests executions
+- **And history of all previous tests executions**
 
 ![Allure history](images/allure-history.png)
  
