@@ -191,9 +191,17 @@ You can stop before method check execution, change some filled (e.g. firstName t
 Field 'firstName' (Actual: 'Roman (changed)' <> Expected: 'Roman')
 ```
 JDI has good integration with Allure so as result of this test (if Allure are in place) you can see colorful and readable report with all tests execution results:
+
+![Allure test fail](images/allure-test-fail.png)
 - Test execution log
+
+![Allure results](images/allure-results.png)
 - Detailed test’s fail reasons information (you can click on … under error text and observe full exception stack trace)
+
+![Allure test run](images/allure-test-run.png)
 - And history of all previous tests executions
+
+![Allure history](images/allure-history.png)
  
 To generate such Allure report you need to copy allure-results folder from project root to target folder and run allure-serve maven plugin
 # Conclusion
