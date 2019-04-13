@@ -3,10 +3,12 @@ package pageobject.uiobjects.example.site;
 import com.epam.jdi.light.elements.pageobjects.annotations.JSite;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
+import pageobject.uiobjects.example.site.pages.AboutPage;
 import pageobject.uiobjects.example.site.pages.HomePage;
 
-@JSite("http://www.baeldung.com/")
+@JSite("https://www.baeldung.com/")
 public class SiteJdi {
-    @Url("/") @Title("Baeldung | Java, Spring and Web Development tutorials")
-    public static HomePage homePage;
+    @Url("/") public static HomePage homePage;
+    @Url("/about/") @Title("About Baeldung | Baeldung")
+    public static AboutPage aboutPage;
 }
