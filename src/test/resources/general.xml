@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="WINDOWS-1251"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test suite" parallel="classes" thread-count="4">
+<suite name="Test suite" parallel="classes" thread-count="1">
     <test name="Tests">
         <packages>
-            <package name="org.mytests.tests.example"/>
+            <package name="fewpageobjects.tests"/>
+            <package name="nopageobjects.tests"/>
+            <package name="pageobjects.tests"/>
         </packages>
-        <!--classes>
-            <class name="org.mytests.tests.example.MenuTests" />
-        </classes-->
+        <classes>
+            <class name="fewpageobjects.tests.ContactsExample"/>
+            <class name="nopageobjects.tests.JDILightExample"/>
+            <class name="pageobject.tests.PageObjectExample"/>
+        </classes>
     </test>
-    <listeners>
-        <listener class-name="org.mytests.tests.testng.TestNGListener" />
-        <listener class-name="org.mytests.tests.testng.RetryListenerClass"/>
-    </listeners>
+<!--    <listeners>-->
+<!--        <listener class-name="org.mytests.tests.testng.TestNGListener" />-->
+<!--        <listener class-name="org.mytests.tests.testng.RetryListenerClass"/>-->
+<!--    </listeners>-->
 </suite>
