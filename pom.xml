@@ -13,18 +13,33 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.7</aspectj.version>
         <driver>chrome</driver>
-        <allure.testng>2.19.0</allure.testng>
-        <allure.maven>2.12.0</allure.maven>
+        <driver.remote.url/>
+        <allure.testng>2.17.2</allure.testng>
+        <allure.maven>2.10.0</allure.maven>
         <jetty.version>11.0.12</jetty.version>
         <log4j2.version>2.17.1</log4j2.version>
+        <!-- - - add-opens java.base/java.lang=ALL-UNNAMED is needed for JDK 16+ -->
+        <aspectj.args></aspectj.args>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>ci</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <driver.remote.url>http://localhost:4444/wd/hub</driver.remote.url>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!--JDI-->
         <dependency>
             <groupId>com.epam.jdi</groupId>
             <artifactId>jdi-light-html</artifactId>
-            <version>LATEST</version>
+            <version>RELEASE</version>
         </dependency>
 
         <dependency>
@@ -81,24 +96,20 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/general.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
+                        ${aspectj.args}
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <properties>
-<!--                        <property>-->
-<!--                            <name>listener</name>-->
-<!--                            <value>io.qameta.allure.testng.AllureTestNg</value>-->
-<!--                        </property>-->
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.testng.AllureTestNg</value>
+                        </property>
                     </properties>
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
                             <value>${project.build.directory}/target/allure-results</value>
-                        </property>
-                        <property>
-                            <name>allure.link.issue.pattern</name>
-                            <value>https://example.org/issue/{}</value>
                         </property>
                     </systemProperties>
                 </configuration>

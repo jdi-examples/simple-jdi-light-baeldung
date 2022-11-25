@@ -53,12 +53,22 @@ jobs:
       - name: Build with Maven
         id: build
         run: mvn clean install -DskipTests -ntp
+ # run Selenoid
+      - name: Start Selenoid
+        uses: Xotabu4/selenoid-github-action@v2
+        id: start-selenoid
+        with:
+          selenoid-start-arguments: |
+            --args "-timeout 60s -limit 5"
+
+      - name: Check Selenoid has been started
+        run: curl http://localhost:4444/status
 
       - name: Tests
         id: functests
         timeout-minutes: 15
         continue-on-error: true
-        run: mvn test -ntp ${{ env.ASPECT_ARGS }} --fail-at-end
+        run: mvn test -ntp -Pci ${{ env.ASPECT_ARGS }} --fail-at-end
 
       - name: Generate Allure report
         uses: simple-elf/allure-report-action@master
