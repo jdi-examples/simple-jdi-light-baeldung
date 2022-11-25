@@ -16,6 +16,5 @@ public class ContactsExample implements TestsInit {
     public void fillContactTest() {
         contactPage.open();
         contactPage.asForm().send(MY_CONTACT);
-        contactPage.asForm().check(MY_CONTACT);
     }
 }

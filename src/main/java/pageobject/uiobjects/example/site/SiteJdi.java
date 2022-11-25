@@ -9,6 +9,6 @@ import pageobject.uiobjects.example.site.pages.HomePage;
 @JSite("https://www.baeldung.com/")
 public class SiteJdi {
     @Url("/") public static HomePage homePage;
-    @Url("/about/") @Title("About Baeldung | Baeldung")
+    @Url("/about") @Title("About Baeldung | Baeldung")
     public static AboutPage aboutPage;
 }
